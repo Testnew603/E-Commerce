@@ -1,0 +1,15 @@
+<div class="material-container" *ngFor="let material of materials">
+    <div class="material-card">
+        <img [src]="material.image" style="width: 220px; height: 140px;">
+    </div>
+    <div class="material-name"> <h4> {{material.name}} </h4></div>
+    <div class="material-description"> <p> {{material.description.slice(0, 80)}}...</p> </div>
+    <div class="details">
+        <div class="material-type" [ngStyle]="{color: material.type === 'free' ? 'Green' : 'Red'}" > {{material.type}} </div>
+        <div class="material-price"><b>Price:</b>  ${{material.price}}</div>
+    </div>
+    <div class="material-button">
+        <button class="btn btn-buy">Buy Now</button>
+        <button class="btn btn-show">Show Details</button>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+button i {
+    color: #96989c;    
+}
+
+.minus-button{
+    border-color: #96989c;
+    margin-right: 10px;
+    border-radius: 50px;
+    width: 25px;
+}
+
+.col-auto input {
+    text-align: center;
+}
+
+.plus-button{
+    border-color: #96989c;
+    margin-left: 10px;
+    border-radius: 50px;
+    width: 25px;
+}
+
+.image-size{
+    width: 100%;
+    height: 400px;
+}
+
+.my-checkbox {
+    transform: scale(2);
+    position: relative;
+    margin-top: 12px;  
+    margin-left: 10px;  
+  }
+
+.float-start span {
+    position: relative;
+    margin-left: 10px;
+}

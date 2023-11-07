@@ -1,0 +1,38 @@
+.material-container{
+    display: inline-flex;
+}
+
+.material-card{
+    width: 220px;
+    height: 320px;
+    margin: 10px 10px;
+    background-color: #F8F9F9;
+}
+
+.material-name{
+    text-align: center;
+}
+
+.material-description{
+    margin: 10px 0px;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.details{
+    display: flex;
+    margin: 10px 0px;
+}
+
+.material-type{
+    width: 50%;
+    font-weight: bold;
+}
+
+.material-button{
+    display: flex;
+}
+
+.btn{
+    width: 140px;
+}
