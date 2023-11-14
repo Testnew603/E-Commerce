@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ILogin } from 'src/app/interfaces/login';
 
 @Injectable({
   providedIn: 'root'
@@ -6,4 +7,9 @@ import { Injectable } from '@angular/core';
 export class AuthGaurdService {
 
   constructor() { }
+
+  logout(): void {
+    localStorage.setItem('isLoggedIn', 'false');
+    localStorage.removeItem('token');
+  }
 }

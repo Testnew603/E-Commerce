@@ -1,26 +1,39 @@
 <div>
-    <app-header> </app-header>
+  <app-header> </app-header>
 </div>
 <h2>Our Products</h2>
 <div class="all-products">
-        <div class="product" *ngFor="let product of allProductData" [ngStyle]="{backgroundColor: product.available === 'Availbale' ? '' : '#D5F5E3'}">
-            <img [src]="product.image">
-            <div class="product-info">
-                <h4 class="product-title"> {{ product.name }}
-                </h4>
-                <p class="product-price">{{ product.color }}</p>
-                <p class="product-price">${{ product.price }}</p>
-                <h3 class="product-price" [ngStyle]="{color: product.available === 'Availbale' ? 'Green' : 'Red'}"> {{ product.available }} </h3>
-                <button *ngIf="product.available === 'Availbale'; else notifyMe">Buy Now</button>
-                <ng-template #notifyMe>
-                    <button href="#">Notify Me</button>                    
-                </ng-template>
-                <button href="#">Add To Cart</button>            
-            </div>
-        </div>
-        </div>
+  <div
+    class="product"
+    *ngFor="let product of allProductData"
+    [ngStyle]="{
+      backgroundColor: product.available === 'Available' ? '' : '#D5F5E3'
+    }"
+  >
+    <img [src]="product.image" />
+    <div class="product-info">
+      <h4 class="product-title">{{ product.name }}</h4>
+      <p class="product-price">{{ product.color }}</p>
+      <p class="product-price">${{ product.price }}</p>
+      <h3
+        class="product-price"
+        [ngStyle]="{
+          color: product.available === 'Available' ? 'Green' : 'Red'
+        }">
+        {{ product.available }}
+      </h3>
+      <p style="display: none">product.count = 1</p>      
+      <button *ngIf="product.available === 'Available'; else notifyMe">
+        Buy Now
+      </button>
+      <ng-template #notifyMe>
+        <button href="#">Notify Me</button>
+      </ng-template>
+      <button (click)="addToCart(product.id)">Add To Cart</button>
+    </div>
+  </div>
+</div>
 
-        <div>
-            <app-footer> </app-footer>
-        </div>
-   
+<div>
+  <!-- <app-footer> </app-footer> -->
+</div>

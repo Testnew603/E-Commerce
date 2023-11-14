@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularDelegate, ModalController } from '@ionic/angular';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDialogModule } from '@angular/material/dialog';
+import { StoreModule } from '@ngrx/store';
 
+import { commonReducer } from './../app/Components/Shared/store/common.reducer'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './Components/home/home.component';
-import { AboutComponent } from './Components/about/about.component';
-import { ContactComponent } from './Components/contact/contact.component';
 import { ProductsComponent } from './Components/products/products.component';
 import { SearchComponent } from './Components/search/search.component';
+import { AuthGuard } from './guards/auth.guard';
 import { NotificationComponent } from './Components/Shared/Layout/notification/notification.component';
 import { MaterialsComponent } from './Components/materials/materials.component';
 import { CategoryListComponent } from './Components/category-list/category-list.component';
@@ -16,18 +21,21 @@ import { HeaderComponent } from './Components/Shared/Layout/header/header.compon
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { ContactUsComponent } from './Contact-us/contact-us/contact-us.component';
 import { AdminDashboardComponent } from './Components/admin/admin-dashboard/admin-dashboard.component';
-import { AdminLoginComponent } from './Components/admin/admin-login/admin-login.component';
-import { UserCrudComponent } from './Components/admin/user-crud/user-crud.component';
 import { FooterComponent } from './Components/Shared/Layout/footer/footer.component';
 import { PageNotFoundErrorComponent } from './Components/Shared/Layout/page-not-found-error/page-not-found-error.component';
 import { CartViewComponent } from './Components/cart-view/cart-view.component';
+import { SigninSignupComponent } from './Components/customer/signin-signup/signin-signup.component';
+import { ProductsService } from './Components/Shared/Services/products.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ForgetPasswordComponent } from './Components/forget-password/forget-password.component';
+import { CheckoutComponent } from './Components/customer/Buyer/checkout/checkout.component';
+import { EffectsModule } from '@ngrx/effects';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutComponent,
-    ContactComponent,
     ProductsComponent,
     SearchComponent,
     NotificationComponent,
@@ -35,20 +43,31 @@ import { CartViewComponent } from './Components/cart-view/cart-view.component';
     CategoryListComponent,
     HeaderComponent,
     ProductDetailsComponent,
+    SigninSignupComponent,
     ContactUsComponent,
     AdminDashboardComponent,
-    AdminLoginComponent,
-    UserCrudComponent,
     FooterComponent,
     PageNotFoundErrorComponent,
-    CartViewComponent
+    CartViewComponent,
+    ForgetPasswordComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    MatDialogModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    StoreModule.forRoot({}, {}),
+    FontAwesomeModule,
+    EffectsModule.forRoot([]),
+    StoreModule.forRoot({ common: commonReducer }),
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatFormFieldModule
+
   ],
-  providers: [],
+  providers: [ModalController, ProductsService, AngularDelegate],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
