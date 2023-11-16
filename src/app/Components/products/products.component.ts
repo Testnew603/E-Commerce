@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../Shared/Services/products.service';
 import { Products } from '../public/model/models';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -13,12 +13,16 @@ import { Router } from '@angular/router';
 export class ProductsComponent implements OnInit {
   allProductData: any[];
   cart: Products[] = [];
+  
 
-  constructor(private _productService: ProductsService,
-    private router: Router) { }
+  constructor(
+    private _productService: ProductsService,
+    private router: Router,
+    private route: ActivatedRoute,
+    ) { }
 
-  ngOnInit(){
-      this.getTotalProducts();
+  ngOnInit(){    
+    this.getTotalProducts();
   }
 
   getTotalProducts(){
@@ -35,6 +39,17 @@ export class ProductsComponent implements OnInit {
       this._productService.addToCart(cartProduct);
     }
     this.router.navigate(['/cart']);
+  }
+
+  buyNow(id: number){
+    const routeParams = this.route.snapshot.paramMap;
+    const userIdFromRoute = Number(routeParams.get('userId'));
+    if(userIdFromRoute){
+      this.router.navigate(['/productDetails',+id])
+    }else{
+      // this._sharedService.OpenPopup(0, 'Create Associate')
+      this.router.navigate(['/signIn'])
+    }
   }
   
 }

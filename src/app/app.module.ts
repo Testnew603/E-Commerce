@@ -2,9 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularDelegate, ModalController } from '@ionic/angular';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatDialogModule } from '@angular/material/dialog';
 import { StoreModule } from '@ngrx/store';
 
 import { commonReducer } from './../app/Components/Shared/store/common.reducer'
@@ -13,7 +10,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './Components/home/home.component';
 import { ProductsComponent } from './Components/products/products.component';
 import { SearchComponent } from './Components/search/search.component';
-import { AuthGuard } from './guards/auth.guard';
 import { NotificationComponent } from './Components/Shared/Layout/notification/notification.component';
 import { MaterialsComponent } from './Components/materials/materials.component';
 import { CategoryListComponent } from './Components/category-list/category-list.component';
@@ -26,15 +22,18 @@ import { PageNotFoundErrorComponent } from './Components/Shared/Layout/page-not-
 import { CartViewComponent } from './Components/cart-view/cart-view.component';
 import { SigninSignupComponent } from './Components/customer/signin-signup/signin-signup.component';
 import { ProductsService } from './Components/Shared/Services/products.service';
+import { MaterialModule } from '../app/Components/material.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ForgetPasswordComponent } from './Components/forget-password/forget-password.component';
 import { CheckoutComponent } from './Components/customer/Buyer/checkout/checkout.component';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddressComponent } from './Components/customer/Buyer/address/address.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AddressComponent,
     HomeComponent,
     ProductsComponent,
     SearchComponent,
@@ -55,17 +54,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     FormsModule,
-    MatDialogModule,
+    MaterialModule,
     AppRoutingModule,
     ReactiveFormsModule,
     StoreModule.forRoot({}, {}),
     FontAwesomeModule,
     EffectsModule.forRoot([]),
     StoreModule.forRoot({ common: commonReducer }),
-    BrowserAnimationsModule,
-    MatInputModule,
-    MatFormFieldModule
-
+    BrowserAnimationsModule
   ],
   providers: [ModalController, ProductsService, AngularDelegate],
   bootstrap: [AppComponent]

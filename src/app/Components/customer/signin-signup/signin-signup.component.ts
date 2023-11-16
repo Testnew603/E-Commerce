@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ILogin } from 'src/app/interfaces/login';
 import { AuthGaurdService } from '../../Shared/Services/auth-gaurd.service';
@@ -6,9 +6,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { Usercred } from '../../public/model/models';
 import { UserService } from '../../Shared/Services/user.service';
-import { Store } from '@ngrx/store';
-import { MatDialog } from "@angular/material/dialog"
-import { openPopup } from '../../Shared/store/common.action';
+import { SharedService } from '../../Shared/Services/shared.service';
 
 @Component({
   selector: 'app-signin-signup',
@@ -21,9 +19,8 @@ export class SigninSignupComponent implements OnInit {
     private router: Router,
     private _authGuardService: AuthGaurdService,
     private _userService: UserService,
-    private _store: Store,
-    private dialog: MatDialog
-  ) {}
+    private _sharedService: SharedService
+  ) { }
 
   loginForm: FormGroup;
   message: string;
@@ -59,7 +56,8 @@ export class SigninSignupComponent implements OnInit {
     if (user || admin) {
       if (user && user.role === 'user') {
         console.log(user.name + ' login successful');
-        this.router.navigate(['/products']);
+        this._authGuardService.setToken(user.id);
+        this.router.navigate(['/products', + user.id]);              
       } else if (admin && _obj.password === this.model.password) {
         console.log('admin login successful');
         this.router.navigate(['/products']);
@@ -72,19 +70,7 @@ export class SigninSignupComponent implements OnInit {
   }
 
   FunctionAdd() {
-    this.OpenPopup(0, 'Create Associate');
-  }
-
-  OpenPopup(code: number, title: string) {
-    this.dialog.open(SigninSignupComponent, {
-      width: '50%',
-      enterAnimationDuration: '1000ms',
-      exitAnimationDuration: '1000ms',
-      data: {
-        code: code,
-        title: title
-      }
-    })
+    this._sharedService.OpenPopup(0, 'Create Associate')
   }
 
   resetlogin() {

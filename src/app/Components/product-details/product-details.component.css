@@ -1,10 +1,16 @@
-.container{
-    margin: 20px 0px;
-    background-color: #dedede;
-    padding: 20px 20px;
-    display: flex;    
-}
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust this as needed to center vertically */
+  }
+  
+  .card-wrapper {
+    max-width: 400px; /* Adjust as needed */
+    margin: auto;
+    text-align: center;
+    margin-top: 30px;
+  }
 
-.product-details{
-    padding: 20px 20px;
-}
+  img {max-width: 100%; object-fit:cover; align-items: center;}
+  

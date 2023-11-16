@@ -8,14 +8,19 @@ import { NotFoundError } from 'rxjs';
 import { ProductsComponent } from './Components/products/products.component';
 import { ForgetPasswordComponent } from './Components/forget-password/forget-password.component';
 import { CheckoutComponent } from './Components/customer/Buyer/checkout/checkout.component';
+import { ProductDetailsComponent } from './Components/product-details/product-details.component';
+import { AddressComponent } from './Components/customer/Buyer/address/address.component';
 
 const routes: Routes = [
   { path:'signIn', component: SigninSignupComponent },
   { path:'forgetPassword', component: ForgetPasswordComponent},
   { path:'products', component: ProductsComponent},
+  { path:'products/:userId', component: ProductsComponent},
   { path:'cart', component: CartViewComponent },
   { path:'checkOut', component: CheckoutComponent },
-  { path:'', redirectTo: '/signIn', pathMatch: 'full' },
+  { path:'address', component: AddressComponent },
+  { path:'productDetails/:id', component: ProductDetailsComponent },
+  { path:'', redirectTo: '/products', pathMatch: 'full' },
   { path:'**', component: NotFoundError}
 ];
 

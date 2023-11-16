@@ -27,7 +27,8 @@ export class Address {
     addLine2: string;
     city: string;
     state: string;
-    zipCode: number;
+    zipCode: string;
+    userId: number;
 }
 
 export class Usercred{

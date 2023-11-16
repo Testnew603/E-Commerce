@@ -7,9 +7,7 @@
     class="product"
     *ngFor="let product of allProductData"
     [ngStyle]="{
-      backgroundColor: product.available === 'Available' ? '' : '#D5F5E3'
-    }"
-  >
+      backgroundColor: product.available === 'Available' ? '' : '#D5F5E3'}">
     <img [src]="product.image" />
     <div class="product-info">
       <h4 class="product-title">{{ product.name }}</h4>
@@ -23,7 +21,7 @@
         {{ product.available }}
       </h3>
       <p style="display: none">product.count = 1</p>      
-      <button *ngIf="product.available === 'Available'; else notifyMe">
+      <button *ngIf="product.available === 'Available'; else notifyMe" (click)="buyNow(product.id)">
         Buy Now
       </button>
       <ng-template #notifyMe>
