@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AddressService } from 'src/app/Components/Shared/Services/address.service';
 import { AuthGaurdService } from 'src/app/Components/Shared/Services/auth-gaurd.service';
 import { Address } from 'src/app/Components/public/model/models';
@@ -10,10 +10,12 @@ import { Address } from 'src/app/Components/public/model/models';
   styleUrls: ['./address.component.css']
 })
 export class AddressComponent implements OnInit {
-  showAddresses: boolean = false;
-  sameShippingAddressAsBilling: boolean = false;
-  selectedCustomerAddressId: string = '';
-  allAdresses: Address = {
+  addresses: Address[] = [];
+  isEditMode: boolean = false;
+  userId: number;
+  length: number = 0;
+  selectedIndex: number = -1;
+  newAddress: Address = {
     id: 0,
     addLine1: '',
     addLine2: '',
@@ -22,66 +24,75 @@ export class AddressComponent implements OnInit {
     zipCode: '',
     userId: 0
   };
-  
-  isEditMode: boolean = false
+  updatedAddressIndex: number = 0;
 
   constructor(
-    private _addresService: AddressService,
-    private router: Router,
-    private route: ActivatedRoute,
-    private _authGuardService: AuthGaurdService
-
-  ) { }
+    private _addressService: AddressService,
+    private _router: Router,
+    private _authGuardService: AuthGaurdService) {
+      this.userId = this._authGuardService.getToken() as number;
+    }
 
   ngOnInit(): void {
-    this.getAddressById();    
+    this.getAddressByUser();
+    this.length = this.addresses.length
   }
 
-  getAddressById() {
-    const userIdFromRoute = this._authGuardService.getToken();
-    if (userIdFromRoute !== null && userIdFromRoute > 0) {
-      const address = this._addresService.getAddressByUserId(userIdFromRoute);
-      if (address) {
-        this.allAdresses = address;
-      } else {
-        alert("No address found for this user.");
+  getAddressByUser(){
+    if(this.userId){
+      this._addressService.getAddressByUserId(this.userId).subscribe(
+        (address) => { if(address) this.addresses  = [address] } );
+      }else{
+        this._router.navigate(['/signIn'])
       }
-    } else {
-      alert("Invalid user ID.");
-    }
   }
 
-  createAddress(address: Address) {
-    const routeParams = this.route.snapshot.paramMap;
-    const userIdFromRoute = Number(routeParams.get('id'));
-    if (userIdFromRoute > 0)
-      this._addresService.createAddress(address)
-    else
-      this.router.navigate(['/signIn'])
+  addAddress() {
+    const lastId = this.addresses[this.addresses.length - 1];
+    const lastId1 = (lastId ? lastId.id : 0) as number;
+    const newId = lastId1 + 1
+    const newAddress1 = { ...this.newAddress, id: newId, userId: this.userId }
+    this.addresses.push(newAddress1);
+    
+    this.clearNewAddress();
+    this.length = this.addresses.length
   }
 
-  updateAddress(id: number, userId: number, updatedAddress: Address) {
-    const routeParams = this.route.snapshot.paramMap;
-    const userIdFromRoute = Number(routeParams.get('id'));
-    if (userIdFromRoute > 0)
-      this._addresService.updateAddressById(id, userId, updatedAddress)
-    else
-      alert("Not Existing ...!");
+  editAddress(index: number) {
+    this.newAddress = { ...this.addresses[index] };
+    this.updatedAddressIndex = index;
+    this.isEditMode = true;
   }
 
-  deleteAddressById(id: number, userId: number) {
-    const routeParams = this.route.snapshot.paramMap;
-    const userIdFromRoute = Number(routeParams.get('id'));
-    if (userIdFromRoute > 0) {
-      const confirmation = confirm("Do you want to delete this address?");
-      if (confirmation) {
-        this._addresService.deleteAddressById(id, userId);
-      } else {
+  updateAddress() {
+    if (this.updatedAddressIndex !== -1) {
+      this.addresses[this.updatedAddressIndex] = { ...this.newAddress };
+    }
+    this.isEditMode = false;
+    this.clearNewAddress();
+  }
 
-      }
-    }
-    else {
-      alert("Invalid user ID or conditions not met.");
-    }
+  deleteAddress(index: number) {
+    this.addresses.splice(index, 1);
+    this.length = this.addresses.length
+  }
+
+  clearNewAddress() {
+    this.newAddress = {
+      id: 0,
+      addLine1: '',
+      addLine2: '',
+      city: '',
+      state: '',
+      zipCode: '',
+      userId: 0
+    };
+    this.updatedAddressIndex = -1;
+  }
+
+  selectAddress(index: number) {
+    this.selectedIndex = index;
+    this._authGuardService.setAddress(index);
+    this._router.navigate(['/checkOut']);
   }
 }

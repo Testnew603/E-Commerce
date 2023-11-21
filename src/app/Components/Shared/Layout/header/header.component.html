@@ -9,7 +9,7 @@
         <div class="order-lg-last col-lg-5 col-sm-8 col-8">
           <div class="float-end">
             <a (click)="myCart('')" class="btn btn-light">
-              <div *ngIf="this.flag === 0">
+              <div *ngIf="this.flag <= 0">
                 <i class="fa fa-user"></i>
                 <span class="ms-1 d-none d-sm-inline-block">Sign in</span>
               </div>

@@ -6,6 +6,7 @@ import { ILogin } from 'src/app/interfaces/login';
 })
 export class AuthGaurdService {
   private token: number | null = null;
+  private addressId: number | null = null;
   constructor() { }
 
   logout(): void {
@@ -19,5 +20,13 @@ export class AuthGaurdService {
 
   getToken(): number | null {
     return this.token;
+  }
+
+  setAddress(addressId: number): void {
+    this.addressId = addressId;
+  }
+
+  getAddress(): number | null {
+    return this.addressId;
   }
 }

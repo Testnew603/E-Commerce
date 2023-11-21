@@ -16,7 +16,6 @@ import { CategoryListComponent } from './Components/category-list/category-list.
 import { HeaderComponent } from './Components/Shared/Layout/header/header.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { ContactUsComponent } from './Contact-us/contact-us/contact-us.component';
-import { AdminDashboardComponent } from './Components/admin/admin-dashboard/admin-dashboard.component';
 import { FooterComponent } from './Components/Shared/Layout/footer/footer.component';
 import { PageNotFoundErrorComponent } from './Components/Shared/Layout/page-not-found-error/page-not-found-error.component';
 import { CartViewComponent } from './Components/cart-view/cart-view.component';
@@ -29,11 +28,21 @@ import { CheckoutComponent } from './Components/customer/Buyer/checkout/checkout
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddressComponent } from './Components/customer/Buyer/address/address.component';
+import { SuccessAnimaComponent } from './Components/customer/Buyer/success-anima/success-anima.component';
+import { CustomerComponent } from './Components/admin/customer/customer.component';
+import { HeaderAdminComponent } from './Components/admin/header-admin/header-admin.component';
+import { MainComponent } from './Components/admin/main/main.component';
+import { SideNavComponent } from './Components/admin/side-nav/side-nav.component';
+import { TopWidgetsComponent } from './Components/admin/top-widgets/top-widgets.component';
+import { AdminProductsComponent } from './Components/admin/admin-products/admin-products.component';
+import { HighchartsChartModule } from 'highcharts-angular';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     AddressComponent,
+    AdminProductsComponent,
     HomeComponent,
     ProductsComponent,
     SearchComponent,
@@ -44,12 +53,18 @@ import { AddressComponent } from './Components/customer/Buyer/address/address.co
     ProductDetailsComponent,
     SigninSignupComponent,
     ContactUsComponent,
-    AdminDashboardComponent,
     FooterComponent,
     PageNotFoundErrorComponent,
+    SuccessAnimaComponent,
     CartViewComponent,
     ForgetPasswordComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    CustomerComponent,
+    HeaderAdminComponent,
+    MainComponent,
+    SideNavComponent,
+    TopWidgetsComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -59,6 +74,7 @@ import { AddressComponent } from './Components/customer/Buyer/address/address.co
     ReactiveFormsModule,
     StoreModule.forRoot({}, {}),
     FontAwesomeModule,
+    HighchartsChartModule,
     EffectsModule.forRoot([]),
     StoreModule.forRoot({ common: commonReducer }),
     BrowserAnimationsModule

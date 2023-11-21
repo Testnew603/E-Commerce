@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { AuthGaurdService } from '../../Services/auth-gaurd.service';
 
 @Component({
   selector: 'app-header',
@@ -9,25 +10,16 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class HeaderComponent implements OnInit {
   constructor(
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _authGuardService: AuthGaurdService
   ) {}
-
-
-  flag = 0
-
+  
+  flag=0
   ngOnInit() {
-    const routeParams: ParamMap | null = this.route.snapshot.paramMap;
-    if (routeParams) {
-      const userIdFromRoute: number = +routeParams.get('userId')!;
-      console.log('User ID:', userIdFromRoute);
-      if(userIdFromRoute > 0)
-      this.flag=1;
-      console.log(this.flag);
-      
-
-    } else {
-      console.error('ParamMap is null');
-    }
+    const userId = this._authGuardService.getToken() as number
+    if(userId > 0)
+      this.flag = 1
+      console.log('User ID:', userId);
   }
 
   myCart(path: string) {

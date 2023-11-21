@@ -8,11 +8,11 @@ import { User } from '../../public/model/models';
 export class UserService {
 
   users: User[] = [
-    { id: 1, username: 'user1', password: 'user1@123', name: 'user1', email: 'user1@gmail.com', phone: '1234567', role: 'user', gender: 'male', status: true },
-    { id: 2, username: 'user2', password: 'user2@123', name: 'user2', email: 'user2@gmail.com', phone: '1234567', role: 'user', gender: 'female', status: true },
-    { id: 3, username: 'user1', password: 'user3@123', name: 'user3', email: 'user3@gmail.com', phone: '1234567', role: 'user', gender: 'male', status: true },
-    { id: 4, username: 'user4', password: 'user4@123', name: 'user4', email: 'user4@gmail.com', phone: '1234567', role: 'user', gender: 'male', status: true }, 
-    { id: 5, username: 'user5', password: 'user5@123', name: 'user5', email: 'user5@gmail.com', phone: '1234567', role: 'user', gender: 'female', status: true }
+    { id: 1, username: 'user1', password: '111', name: 'user1', email: 'user1@gmail.com', phone: '1234567', role: 'user', gender: 'male', status: true, address:[]},
+    { id: 2, username: 'user2', password: '222', name: 'user2', email: 'user2@gmail.com', phone: '1234567', role: 'user', gender: 'female', status: true, address:[]},
+    { id: 3, username: 'user3', password: '333', name: 'user3', email: 'user3@gmail.com', phone: '1234567', role: 'user', gender: 'male', status: true, address:[] },
+    { id: 4, username: 'user4', password: '444', name: 'user4', email: 'user4@gmail.com', phone: '1234567', role: 'user', gender: 'male', status: true, address:[] }, 
+    { id: 5, username: 'user5', password: '555', name: 'user5', email: 'user5@gmail.com', phone: '1234567', role: 'user', gender: 'female', status: true, address:[] }
   ];
 
   constructor() { }

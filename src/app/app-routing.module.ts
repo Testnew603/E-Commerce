@@ -10,6 +10,7 @@ import { ForgetPasswordComponent } from './Components/forget-password/forget-pas
 import { CheckoutComponent } from './Components/customer/Buyer/checkout/checkout.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { AddressComponent } from './Components/customer/Buyer/address/address.component';
+import { SuccessAnimaComponent } from './Components/customer/Buyer/success-anima/success-anima.component';
 
 const routes: Routes = [
   { path:'signIn', component: SigninSignupComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path:'cart', component: CartViewComponent },
   { path:'checkOut', component: CheckoutComponent },
   { path:'address', component: AddressComponent },
+  { path:'successAnim', component: SuccessAnimaComponent },
   { path:'productDetails/:id', component: ProductDetailsComponent },
   { path:'', redirectTo: '/products', pathMatch: 'full' },
   { path:'**', component: NotFoundError}

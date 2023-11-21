@@ -18,7 +18,8 @@ export class User {
     phone:string;
     role:string;
     gender:string;
-    status:boolean
+    status:boolean;
+    address: any[] = [];
 }
 
 export class Address {
@@ -28,7 +29,7 @@ export class Address {
     city: string;
     state: string;
     zipCode: string;
-    userId: number;
+    userId?: number;
 }
 
 export class Usercred{

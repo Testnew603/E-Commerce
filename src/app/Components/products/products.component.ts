@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../Shared/Services/products.service';
 import { Products } from '../public/model/models';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthGaurdService } from '../Shared/Services/auth-gaurd.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class ProductsComponent implements OnInit {
   constructor(
     private _productService: ProductsService,
     private router: Router,
-    private route: ActivatedRoute,
+    private _authGuardService: AuthGaurdService
     ) { }
 
   ngOnInit(){    
@@ -42,9 +43,8 @@ export class ProductsComponent implements OnInit {
   }
 
   buyNow(id: number){
-    const routeParams = this.route.snapshot.paramMap;
-    const userIdFromRoute = Number(routeParams.get('userId'));
-    if(userIdFromRoute){
+    const userId = this._authGuardService.getToken() as number;
+    if(userId){
       this.router.navigate(['/productDetails',+id])
     }else{
       // this._sharedService.OpenPopup(0, 'Create Associate')

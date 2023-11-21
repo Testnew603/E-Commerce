@@ -1,31 +1,50 @@
-<form class="address-form" #addressForm="ngForm" (ngSubmit)="createAddress(allAdresses)">
-  <mat-form-field appearance="fill">
-    <mat-label>Address Line 1</mat-label>
-    <input matInput name="addLine1" [(ngModel)]="allAdresses.addLine1" required>
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Address Line 2</mat-label>
-    <input matInput name="addLine2" [(ngModel)]="allAdresses.addLine2">
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>City</mat-label>
-    <input matInput name="city" [(ngModel)]="allAdresses.city" required>
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>State</mat-label>
-    <input matInput name="state" [(ngModel)]="allAdresses.state" required>
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Zip Code</mat-label>
-    <input matInput name="zipCode" [(ngModel)]="allAdresses.zipCode" required>
-  </mat-form-field>
-
-  <div>
-    <button mat-raised-button color="primary" type="submit">{{ isEditMode ? 'Update Address' : 'Create Address' }}</button>
-    <button mat-raised-button color="warn" *ngIf="isEditMode" (click)="getAddressById()">Cancel</button>
+<div>
+  <app-header> </app-header>
+</div>
+<!-- Panel Body -->
+<br><br>
+<div class="panel-body" style="text-align: -webkit-center;">
+  <div *ngFor="let address of addresses; let i = index" class="alert alert-info" style="width: 50%;">
+    <div style="float: left; height: 10px; width: 10px;"><label for="">Select <input type="checkbox" [checked]="address.id === selectedIndex" (change)="selectAddress(address.id)"></label></div>
+    <p>{{ address.addLine1 }}</p>
+    <p>{{ address.addLine2 }}</p>
+    <p>{{ address.city }}</p>
+    <p>{{ address.state }}</p>
+    <p>{{ address.zipCode }}</p>
+    <div style="margin-bottom: 30px;">
+    <a (click)="deleteAddress(i)" style="float: right;">
+      <i class="fa-solid fa-trash fa-xl" style="color: #1862e2;"></i>
+    </a>
+    <a (click)="editAddress(i)" style="float: right;padding-right: 8px;">
+      <i class="fas fa-edit fa-xl" style="color: #1862e2;"></i>
+    </a>
   </div>
-</form>
+  </div>
+  <div *ngIf="length <= 0" class="alert alert-info" style="width: 50%;">
+    Addresses Are Empty !!!
+  </div>
+</div>
+
+<!-- Panel Footer -->
+
+<div class="panel-footer">
+  <div class="form-group center-form">
+    <form name="addressForm">
+      <h2>Add New Address</h2>
+      <input id="addLine1" name="addLine1" required [(ngModel)]="newAddress.addLine1" style="width: 50%;" placeholder="Address Line 1"
+        class="form-control">
+        <input id="addLine2" name="addLine2" required [(ngModel)]="newAddress.addLine2" style="width: 50%;" placeholder="Address Line 2"
+        class="form-control">
+        <input id="city" name="city" required [(ngModel)]="newAddress.city" style="width: 50%;" placeholder="City"
+        class="form-control">
+        <input id="state" name="state" required [(ngModel)]="newAddress.state" style="width: 50%;" placeholder="State"
+        class="form-control">
+        <input id="zipCode" name="zipCode" required [(ngModel)]="newAddress.zipCode" style="width: 50%;" placeholder="Zip Code"
+        class="form-control">
+      <!-- Add more input fields for other address properties -->
+
+      <button type="submit" (click)="addAddress()" [disabled]="isEditMode" class="btn btn-default">Add</button>
+      <button type="submit" (click)="updateAddress()" [disabled]="!isEditMode" class="btn btn-default">Update</button>
+    </form>
+  </div>
+</div>
