@@ -26,7 +26,7 @@ export class SigninSignupComponent implements OnInit {
   message: string;
   returnUrl: string;
   faLock = faLock;
-  model: ILogin = { userid: 'admin', password: 'admin@123' };
+  model: ILogin = { userid: 'admin', password: 'admin1' };
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -60,7 +60,7 @@ export class SigninSignupComponent implements OnInit {
         this.router.navigate(['/products', + user.id]);              
       } else if (admin && _obj.password === this.model.password) {
         console.log('admin login successful');
-        this.router.navigate(['/products']);
+        this.router.navigate(['/dashboard']);
       }
     } else {
       this.message = 'Please check your userid and password';

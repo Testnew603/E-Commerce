@@ -36,13 +36,17 @@ import { SideNavComponent } from './Components/admin/side-nav/side-nav.component
 import { TopWidgetsComponent } from './Components/admin/top-widgets/top-widgets.component';
 import { AdminProductsComponent } from './Components/admin/admin-products/admin-products.component';
 import { HighchartsChartModule } from 'highcharts-angular';
-
+import { ProductsCrudComponent } from './Components/admin/products-crud/products-crud.component';
+import { DashboardComponent } from './Components/admin/dashboard/dashboard.component';
+import { AddPopupComponent } from './Components/admin/products-crud/add-popup/add-popup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddressComponent,
     AdminProductsComponent,
+    AddPopupComponent,
+    DashboardComponent,
     HomeComponent,
     ProductsComponent,
     SearchComponent,
@@ -51,6 +55,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
     CategoryListComponent,
     HeaderComponent,
     ProductDetailsComponent,
+    ProductsCrudComponent,
     SigninSignupComponent,
     ContactUsComponent,
     FooterComponent,

@@ -11,6 +11,11 @@ import { CheckoutComponent } from './Components/customer/Buyer/checkout/checkout
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { AddressComponent } from './Components/customer/Buyer/address/address.component';
 import { SuccessAnimaComponent } from './Components/customer/Buyer/success-anima/success-anima.component';
+import { ProductsCrudComponent } from './Components/admin/products-crud/products-crud.component';
+import { DashboardComponent } from './Components/admin/dashboard/dashboard.component';
+import { SideNavComponent } from './Components/admin/side-nav/side-nav.component';
+import { MainComponent } from './Components/admin/main/main.component';
+import { HeaderAdminComponent } from './Components/admin/header-admin/header-admin.component';
 
 const routes: Routes = [
   { path:'signIn', component: SigninSignupComponent },
@@ -21,7 +26,9 @@ const routes: Routes = [
   { path:'checkOut', component: CheckoutComponent },
   { path:'address', component: AddressComponent },
   { path:'successAnim', component: SuccessAnimaComponent },
+  { path:'admin-products-crud', component: ProductsCrudComponent },
   { path:'productDetails/:id', component: ProductDetailsComponent },
+  { path: 'dashboard', component: DashboardComponent },
   { path:'', redirectTo: '/products', pathMatch: 'full' },
   { path:'**', component: NotFoundError}
 ];

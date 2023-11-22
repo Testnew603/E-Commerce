@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { faDashboard, faLocation, faShop, faBox, faMoneyBill, faChartBar, faContactBook, faHand } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -7,6 +8,9 @@ import { faDashboard, faLocation, faShop, faBox, faMoneyBill, faChartBar, faCont
   styleUrls: ['./side-nav.component.css']
 })
 export class SideNavComponent {
+
+  constructor(private _router: Router){ }
+
   faDashboard = faDashboard;
   faLocation = faLocation;
   faShop = faShop;
@@ -16,5 +20,7 @@ export class SideNavComponent {
   faContactBook = faContactBook;
   faHand = faHand;
 
-
+  products_crud(){
+    this._router.navigate(['admin-products-crud']);
+  }
 }

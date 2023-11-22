@@ -18,7 +18,8 @@ export class CartViewComponent implements OnInit {
   isCheckBoxChecked: boolean[] = [false];
   discount = this.getTotal() * 2 / 100;
 
-  constructor(private _productsService: ProductsService,
+  constructor(
+    private _productsService: ProductsService,
     private modalCtrl: ModalController,
     private router: Router) { }
 
