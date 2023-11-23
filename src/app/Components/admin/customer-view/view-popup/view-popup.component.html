@@ -1,0 +1,36 @@
+<form action="">
+    <div class="container">
+      <h1> Details of {{data.name}} </h1>
+      <hr>
+        <div class="close-button">
+            <button>X</button>
+        </div>
+      <label for="name"><b>Name:</b></label>
+      <input type="text" name="name" id="name" readonly value=" {{data.name}} ">
+
+      <label for=""><b>Gender</b></label>
+
+      <input type="radio" name="male" id="available" readonly value=" {{data.gender}} ">
+      <label for="male">Male</label>
+
+      <input type="radio" name="female" id="female" readonly value=" {{data.gender}} "> 
+      <label for="female">Female</label> <br>
+
+        
+      <label for="username"><b>Username:</b></label>
+      <input type="text" name="username" id="username" readonly value=" {{data.username}} ">
+  
+      <label for="email"><b>Email:</b></label>
+      <input type="text" name="email" id="email" readonly value=" {{data.email}} ">
+
+      <label for="phone"><b>Phone</b></label>
+      <input type="text" name="phone" id="phone" readonly value=" {{data.phone}} ">
+
+     
+      <label for="role"><b>Role</b></label>
+      <input type="text" name="role" id="role" readonly value=" {{data.role}} ">
+
+      <hr>
+      <button>Cancel</button>
+    </div>
+  </form>

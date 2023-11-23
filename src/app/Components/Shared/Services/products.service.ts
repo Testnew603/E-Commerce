@@ -16,7 +16,6 @@ export class ProductsService {
 
   private cart: Products[] = [];
   private cartItemCount = new BehaviorSubject<number>(0);
-  
 
   constructor() { }
   getProducts(): Observable<Products[]>{
@@ -53,8 +52,23 @@ export class ProductsService {
     }
     this.cartItemCount.next(this.cartItemCount.value + 1);
   }
-  
 
+  addProducts(product: Products) {
+      const lastId = this.products[this.products.length - 1];
+      const lastId1 = (lastId? lastId.id : 0) as number;
+      product.id = lastId1 + 1;
+      this.products.push(product);
+  }
+
+  editProducts(product: Products, index: number){
+    const updateIndex = this.products.findIndex(product => product.id === index)
+      this.products[updateIndex] = product
+  }
+
+  removeProducts(index: number){
+    const productIndex = this.products.findIndex(product => product.id === index)
+      this.products.splice(productIndex, 1)
+  }
   decreaseProduct(products: Products){
     for(let [index, product] of this.cart.entries()){
       if(product.id === products.id){

@@ -1,1 +1,39 @@
-<p>add-popup works!</p>
+<form action="">
+    <div class="container">
+      <h1>Add product</h1>
+      <hr>
+        <div class="close-button">
+            <button>X</button>
+        </div>
+      <label for="name"><b>Name:</b></label>
+      <input type="text" placeholder="Enter Name" name="name" id="name" required [(ngModel)]="name">
+  
+      <label for="price"><b>Price:</b></label>
+      <input type="text" placeholder="Enter Price" name="price" id="price" required [(ngModel)]="price">
+  
+      <label for="color"><b>Color:</b></label>
+      <input type="text" placeholder="Enter Color" name="color" id="color" required [(ngModel)]="color">
+
+      <label for="qty"><b>Quantity</b></label>
+      <input type="text" placeholder="Enter Quantity" name="qty" id="qty" required [(ngModel)]="quantity">
+
+      <label for=""><b>Availability</b></label>
+
+      <input type="radio" name="available" id="available" required [(ngModel)]="available" value="Available" checked>
+      <label for="available">Available</label>
+
+      <input type="radio" name="not available" id="not available" required [(ngModel)]="available" value="Not Available"> 
+      <label for="not available">Not Available</label> <br>
+
+      <label for="image"><b>Image</b></label>
+      <input type="text" placeholder="Select Image" name="image" id="image" required [(ngModel)]="image">
+
+      <label for="qty"><b>Count</b></label>
+      <input type="text" placeholder="Enter Quantity" name="qty" id="qty" required [(ngModel)]="count">
+
+      <hr>
+      <button type="submit" class="registerbtn" (click)="isUpdate ? updateProduct() : addProduct()">
+        {{ isUpdate ? 'Update' : 'Add' }}
+      </button>
+    </div>
+  </form>

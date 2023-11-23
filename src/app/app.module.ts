@@ -39,13 +39,19 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { ProductsCrudComponent } from './Components/admin/products-crud/products-crud.component';
 import { DashboardComponent } from './Components/admin/dashboard/dashboard.component';
 import { AddPopupComponent } from './Components/admin/products-crud/add-popup/add-popup.component';
+import { CustomerViewComponent } from './Components/admin/customer-view/customer-view.component';
+import { ViewPopupComponent } from './Components/admin/customer-view/view-popup/view-popup.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     AddressComponent,
     AdminProductsComponent,
+    CustomerViewComponent,
     AddPopupComponent,
+    ViewPopupComponent,
     DashboardComponent,
     HomeComponent,
     ProductsComponent,

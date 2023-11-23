@@ -1,0 +1,49 @@
+<div class="container1">
+    <div class="header">
+      <app-header-admin></app-header-admin>
+    </div>
+    <div class="main-container">
+      <div class="side-nav" style="width: 250px">
+        <app-side-nav></app-side-nav>
+      </div>
+      <div class="main">
+        <section class="p-3">
+          <div class="row">
+            <div class="col-12">
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-12">
+                <h2>Registered Users</h2>
+              <table
+                class="table table-striped table-hover mt-3 text-center table-bordered">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+  
+                <tbody id="data" *ngFor="let user of users">
+                  <tr>
+                      <td> {{ user.id }} </td>
+                      <td> {{ user.name }} </td>
+                      <td> {{ user.gender }} </td>
+                      <td> {{ user.username }} </td>
+                      <td> {{ user.email }} </td>
+                      <td> {{ user.phone }} </td>
+                      <td> {{ user.role }} </td>
+                      <td> <button (click)="viewUser(user)"> View </button>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>

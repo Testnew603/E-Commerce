@@ -19,7 +19,6 @@ export class User {
     role:string;
     gender:string;
     status:boolean;
-    address: any[] = [];
 }
 
 export class Address {
