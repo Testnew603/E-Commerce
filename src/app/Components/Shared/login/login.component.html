@@ -1,0 +1,23 @@
+
+    <div class="container">
+      <div class="wrapper">
+        <div class="title"><span>Login Form</span></div>
+        <form [formGroup]="loginForm">
+          <div class="row">
+         
+            <i class="fas"></i>
+            <input type="text" placeholder="Username" required formControlName="username">
+          </div>
+          <div class="row">
+            <i class="fas"></i>
+            <input type="password" placeholder="Password" required formControlName="password">
+          </div>
+          <div class="pass"><a href="#">Forgot password?</a></div>
+          <div class="row button">
+            <input type="submit" value="Login" (click)="login()">
+          </div>
+          <div class="signup-link">Not a member? <button (click)="signup()">Signup now</button></div>
+        </form>
+      </div>
+    </div>
+

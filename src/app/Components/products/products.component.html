@@ -1,7 +1,6 @@
 <div>
   <app-header> </app-header>
 </div>
-<h2>Our Products</h2>
 <div class="all-products">
   <div
     class="product"
@@ -21,17 +20,17 @@
         {{ product.available }}
       </h3>
       <p style="display: none">product.count = 1</p>      
-      <button *ngIf="product.available === 'Available'; else notifyMe" (click)="buyNow(product.id)">
+      <button *ngIf="product.available === 'Available'; else notifyMe" (click)="buyNow(product.id)" class="btn btn-success">
         Buy Now
       </button>
       <ng-template #notifyMe>
-        <button href="#">Notify Me</button>
+        <button class="btn btn-primary" href="#">Notify Me</button>
       </ng-template>
-      <button (click)="addToCart(product.id)">Add To Cart</button>
+      <button (click)="addToCart(product.id)" class="btn btn-info">Add To Cart</button>
     </div>
   </div>
 </div>
 
 <div>
-  <!-- <app-footer> </app-footer> -->
+  <app-footer> </app-footer>
 </div>

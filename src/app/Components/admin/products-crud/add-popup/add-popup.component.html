@@ -3,7 +3,7 @@
       <h1>Add product</h1>
       <hr>
         <div class="close-button">
-            <button>X</button>
+            <button class="btn btn-danger" (click)="closeModal()">X</button>
         </div>
       <label for="name"><b>Name:</b></label>
       <input type="text" placeholder="Enter Name" name="name" id="name" required [(ngModel)]="name">
@@ -26,6 +26,9 @@
       <label for="not available">Not Available</label> <br>
 
       <label for="image"><b>Image</b></label>
+      <div class="container">
+        <input type="file" (change)="fileChange($event)" name="file" id="file" class="inputfile" [src]="(imgPath + image)">
+        </div>
       <input type="text" placeholder="Select Image" name="image" id="image" required [(ngModel)]="image">
 
       <label for="qty"><b>Count</b></label>

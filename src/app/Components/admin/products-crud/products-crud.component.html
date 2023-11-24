@@ -44,10 +44,10 @@
                     <td> {{ product.price }} </td>
                     <td> {{ product.quantity }} </td>
                     <td> {{ product.available }} </td>
-                    <td> {{ product.image }} </td>
-                    <td> <button (click)="editProduct(product)"> Edit </button> <br> 
-                    <button (click)="removeProduct(product)">Remove</button> </td>
-
+                    <td> {{ product.image }} 
+                    <img id="uploadedImage"  src=" {{ product.image }} "  alt="Uploaded Image" style="height: 100px; width: 100px;"> </td>
+                    <td> <button (click)="editProduct(product)" class="btn btn-info"> Edit </button> <br> 
+                    <button (click)="removeProduct(product)" class="btn btn-danger">Remove</button> </td>
                 </tr>
               </tbody>
             </table>

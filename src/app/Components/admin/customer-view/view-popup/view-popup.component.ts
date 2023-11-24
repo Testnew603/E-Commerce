@@ -20,7 +20,6 @@ export class ViewPopupComponent {
   status:boolean;
 
   constructor(
-    private _userService: UserService,
     public dialogRef: MatDialogRef<ViewPopupComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
   ) { 
@@ -31,5 +30,9 @@ export class ViewPopupComponent {
       this.email = data.email;
       this.phone = data.phone;
       this.role = data.role;
+    }
+    
+    closeModal(){
+      this.dialogRef.close(ViewPopupComponent);
     }
 }

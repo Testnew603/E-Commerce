@@ -78,8 +78,7 @@ body {
 
   .close-button button {
     width: 40px;
-    height: 30px;
-    background: red;
+    height: 40px;
     color: white;
     border: none;
   }

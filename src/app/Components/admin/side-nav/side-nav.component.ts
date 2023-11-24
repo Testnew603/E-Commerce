@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { faDashboard, faLocation, faShop, faBox, faMoneyBill, faChartBar, faContactBook, faHand } from '@fortawesome/free-solid-svg-icons';
+import { faDashboard, faLocation, faShop, faBox, faMoneyBill, faChartBar, faContactBook, faHand, faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-side-nav',
@@ -19,8 +19,17 @@ export class SideNavComponent {
   faChartBar = faChartBar;
   faContactBook = faContactBook;
   faHand = faHand;
+  faUser = faUser;
 
   products_crud(){
-    this._router.navigate(['admin-products-crud']);
+    this._router.navigate(['/admin-products-crud']);
+  }
+
+  customer_view(){
+    this._router.navigate(['/admin-user-view']);
+  }
+
+  dashBoard(){
+    this._router.navigate(['/dashboard'])
   }
 }

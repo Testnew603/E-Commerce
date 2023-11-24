@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Optional, Inject } from '@angular/core'; 
 import { ProductsService } from 'src/app/Components/Shared/Services/products.service';
 import { Products } from 'src/app/Components/public/model/models';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-popup',
@@ -19,6 +19,9 @@ export class AddPopupComponent implements OnInit {
   image: string = '';
   count: number = 0;
   isUpdate = false;
+  imgFileName:string = '';
+  @Input() imgPath:string = "../../../../../assets/categories/";
+  
   constructor(
     private _productService: ProductsService,
     public dialogRef: MatDialogRef<AddPopupComponent>,
@@ -50,7 +53,7 @@ export class AddPopupComponent implements OnInit {
     color: this.color,
     quantity: this.quantity,
     available: this.available,
-    image: this.image,
+    image: this.imgPath + this.image,
     count: this.count
     };
     this._productService.addProducts(newProduct);
@@ -73,7 +76,7 @@ export class AddPopupComponent implements OnInit {
       color: this.color || this.data.color,
       quantity: this.quantity || this.data.quantity,
       available: this.available || this.data.available,
-      image: this.image || this.data.image,
+      image: this.imgPath + this.image || this.data.image,
       count: this.count || this.data.count
     };
     
@@ -87,4 +90,20 @@ export class AddPopupComponent implements OnInit {
     this.count = 0;
   }
 
+  closeModal(){
+    this.dialogRef.close(AddPopupComponent);
+  }
+
+  fileChange(event: any) {
+    this.image = event.target.files[0].name
+    console.log(this.image);
+    
+    this.products.push(event.target.files);
+  }
+    
+    save(filename: string) {
+      const myFile = this.products.find(s => s.name === filename);
+      console.log(myFile);
+      
+    }
 }

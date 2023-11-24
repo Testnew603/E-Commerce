@@ -35,7 +35,14 @@ export class UserService {
   }
 
   addUser(userData: User){
+    const lastId = this.users[this.users.length - 1];
+      const lastId1 = (lastId? lastId.id : 0) as number;
+      userData.id = lastId1 + 1;
+      userData.role = 'user';
+      userData.status = true;
+      console.log(this.users);
     return this.users.push(userData);
+    
   }
 
   updateUser(id: number, userData: User) {

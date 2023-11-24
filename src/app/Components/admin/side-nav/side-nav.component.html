@@ -1,19 +1,19 @@
 <div class="nav-items">
-    <div class="nav-item">
+    <div class="nav-item" (click)="dashBoard()">
       <fa-icon [icon]="faDashboard"></fa-icon>
       <span>Dashboard</span>
     </div>
-    <div class="nav-item">
-      <fa-icon [icon]="faLocation"></fa-icon>
-      <span>Locations</span>
-    </div>
-    <div class="nav-item">
-      <fa-icon [icon]="faShop"></fa-icon>
-      <span>Shops</span>
+    <div class="nav-item" (click)="customer_view()">
+      <fa-icon [icon]="faUser"></fa-icon>
+      <span>Users</span>
     </div>
     <div class="nav-item" (click)="products_crud()">
       <fa-icon [icon]="faBox"></fa-icon>
       <span>Products</span>
+    </div>
+    <div class="nav-item">
+      <fa-icon [icon]="faShop"></fa-icon>
+      <span>Shops</span>
     </div>
     <div class="nav-item">
       <fa-icon [icon]="faMoneyBill"></fa-icon>

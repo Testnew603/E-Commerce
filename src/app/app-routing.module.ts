@@ -16,17 +16,23 @@ import { DashboardComponent } from './Components/admin/dashboard/dashboard.compo
 import { SideNavComponent } from './Components/admin/side-nav/side-nav.component';
 import { MainComponent } from './Components/admin/main/main.component';
 import { HeaderAdminComponent } from './Components/admin/header-admin/header-admin.component';
+import { CustomerViewComponent } from './Components/admin/customer-view/customer-view.component';
+import { SignUpComponent } from './Components/Shared/sign-up/sign-up.component';
+import { LoginComponent } from './Components/Shared/login/login.component';
 
 const routes: Routes = [
-  { path:'signIn', component: SigninSignupComponent },
+  // { path:'signIn', component: SigninSignupComponent },
+  { path:'signIn', component: LoginComponent },
+  { path:'signUp', component: SignUpComponent },
   { path:'forgetPassword', component: ForgetPasswordComponent},
   { path:'products', component: ProductsComponent},
+  { path:'admin-products-crud', component: ProductsCrudComponent},
+  { path:'admin-user-view', component: CustomerViewComponent},
   { path:'products/:userId', component: ProductsComponent},
   { path:'cart', component: CartViewComponent },
   { path:'checkOut', component: CheckoutComponent },
   { path:'address', component: AddressComponent },
   { path:'successAnim', component: SuccessAnimaComponent },
-  { path:'admin-products-crud', component: ProductsCrudComponent },
   { path:'productDetails/:id', component: ProductDetailsComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path:'', redirectTo: '/products', pathMatch: 'full' },

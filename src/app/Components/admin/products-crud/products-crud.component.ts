@@ -23,6 +23,7 @@ export class ProductsCrudComponent implements OnInit {
   image: string = '';
   count: number = 0;
   isUpdate: boolean = false;
+  imageSrc: any;
 
   constructor(
     private _router: Router,
@@ -79,3 +80,4 @@ export class ProductsCrudComponent implements OnInit {
     this._productService.removeProducts(product['id'])
   }
 }
+

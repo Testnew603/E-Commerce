@@ -41,6 +41,9 @@ import { DashboardComponent } from './Components/admin/dashboard/dashboard.compo
 import { AddPopupComponent } from './Components/admin/products-crud/add-popup/add-popup.component';
 import { CustomerViewComponent } from './Components/admin/customer-view/customer-view.component';
 import { ViewPopupComponent } from './Components/admin/customer-view/view-popup/view-popup.component';
+import { LoginComponent } from './Components/Shared/login/login.component';
+import { SignUpComponent } from './Components/Shared/sign-up/sign-up.component';
+
 
 
 
@@ -74,7 +77,9 @@ import { ViewPopupComponent } from './Components/admin/customer-view/view-popup/
     HeaderAdminComponent,
     MainComponent,
     SideNavComponent,
-    TopWidgetsComponent
+    TopWidgetsComponent,
+    LoginComponent,
+    SignUpComponent
     
   ],
   imports: [

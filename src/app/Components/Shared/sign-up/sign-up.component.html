@@ -1,0 +1,40 @@
+
+<div class="container">
+    <div class="wrapper">
+      <div class="title"><span>Register</span></div>
+      <form #formData="ngForm" (ngSubmit)="signupUser(formData.value)">
+        <div class="row">
+            <i class="fas"></i>
+            <input type="text" placeholder="name" required [(ngModel)]="users. name" name="name">
+          </div>
+          <div class="row">
+            <i class="fas"></i>
+            <input type="email" placeholder="email" required [(ngModel)]="users.email" name="email">
+          </div>
+          <div class="row">
+            <i class="fas"></i>
+            <input type="number" placeholder="phone" required [(ngModel)]="users.phone" name="phone">
+          </div>
+          <div class="row1">
+            <input type="radio" name="gender" [(ngModel)]="users.gender" value="male" id="maleRadio">
+            <label for="maleRadio">Male</label>
+        
+            <input type="radio" name="gender" [(ngModel)]="users.gender" value="female" id="femaleRadio">
+            <label for="femaleRadio">Female</label>
+        </div>
+        <div class="row">
+          <i class="fas"></i>
+          <input type="text" placeholder="username" required [(ngModel)]="users.username" name="username">
+        </div>
+        <div class="row">
+          <i class="fas"></i>
+          <input type="password" placeholder="password" required [(ngModel)]="users.password" name="password">
+        </div>
+        <div class="row button">
+          <input type="submit" value="Sign Up">
+        </div>
+        <div class="signup-link">Back to ? <button (click)="login()">Login</button></div>
+      </form>
+    </div>
+  </div>
+
